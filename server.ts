@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use("/api", api);
 
 app.get("*", (req, res) => {
-  res.sendfile(path.join(__dirname, "dist/meanvideoplayer/index.html"));
+  res.sendFile(path.join(__dirname, "dist/meanvideoplayer/index.html"));
 });
 
 app.listen(port, () => {
