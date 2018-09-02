@@ -1,26 +1,26 @@
 import { Component, OnInit } from "@angular/core";
 import { Video } from "../video";
+import { VideoService } from "../video.service";
 
 @Component({
   selector: "app-video-center",
   templateUrl: "./video-center.component.html",
-  styleUrls: ["./video-center.component.css"]
+  styleUrls: ["./video-center.component.css"],
+  providers: [VideoService]
 })
 export class VideoCenterComponent implements OnInit {
-  videos: Video[] = [
-    {
-      _id: "5b8a9b6f7872448e508e5b52",
-      title: "Mean Stack First Video",
-      url: "https://youtu.be/ieO2MPxc7kY",
-      desc: "MEAN stack First App Video"
-    },
-  ];
+  videos: Array<Video>;
 
   selectedVideo: Video;
 
-  constructor() {}
+  constructor(private _videoService: VideoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._videoService.getVideos().subscribe(resVideoData => {
+      console.log(resVideoData)
+      this.videos = resVideoData;
+    });
+  }
 
   onSelectVideo(video: any) {
     this.selectedVideo = video;
