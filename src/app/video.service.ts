@@ -6,19 +6,31 @@ import { Video } from "./video";
   providedIn: "root"
 })
 export class VideoService {
-  private _getUrl = "api/videos";
-  private _postUrl = "api/videos";
+  private url = "api/videos";
   constructor(private http: Http) {}
 
   getVideos() {
-    return this.http.get(this._getUrl).pipe(map((res: Response) => res.json()));
+    return this.http.get(this.url).pipe(map((res: Response) => res.json()));
   }
 
   addVideo(video: Video) {
     let headers = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions({ headers: headers });
     return this.http
-      .post(this._postUrl, JSON.stringify(video), options)
+      .post(this.url, JSON.stringify(video), options)
+      .pipe(map((res: Response) => res.json()));
+  }
+  updateVideo(video: Video) {
+    let headers = new Headers({ "Content-Type": "application/json" });
+    let options = new RequestOptions({ headers: headers });
+    return this.http
+      .put(this.url+"/"+video._id, JSON.stringify(video), options)
+      .pipe(map((res: Response) => res.json()));
+  }
+
+  delete(video: Video) {
+    return this.http
+      .delete(this.url + video._id)
       .pipe(map((res: Response) => res.json()));
   }
 }

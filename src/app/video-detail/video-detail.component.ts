@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-video-detail",
   templateUrl: "./video-detail.component.html",
   styleUrls: ["./video-detail.component.css"],
-  inputs: ["video"]
+  inputs: ["video"],
+  outputs: ["updateVideoEvent"]
 })
 export class VideoDetailComponent implements OnInit {
-  @Input()video;
-  
-  
+  video: any;
+  private updateVideoEvent = new EventEmitter();
   editTitle: boolean = false;
 
   constructor() {}
@@ -22,5 +22,8 @@ export class VideoDetailComponent implements OnInit {
   }
   onTitleClick() {
     this.editTitle = true;
+  }
+  updateVideo() {
+    this.updateVideoEvent.emit(this.video);
   }
 }
