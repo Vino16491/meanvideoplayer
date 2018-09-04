@@ -1,5 +1,6 @@
 <div>
-  <iframe width="100%" height="300" [src]="video.video"></iframe>
+  <object  width="100%" height="300" [data]="video.video | safe" frameborder="0" allowfullscreen></object>
+  
   <form>
     <div class="form-group" *ngIf="editTitle">
       <input type="input" class="form-control" name="title" required placeholder="title" [(ngModel)]="video.title">
