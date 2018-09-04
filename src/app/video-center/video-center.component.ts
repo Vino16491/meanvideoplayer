@@ -17,7 +17,7 @@ export class VideoCenterComponent implements OnInit {
 
   ngOnInit() {
     this._videoService.getVideos().subscribe(resVideoData => {
-      console.log(resVideoData)
+      console.log(resVideoData);
       this.videos = resVideoData;
     });
   }
@@ -25,5 +25,12 @@ export class VideoCenterComponent implements OnInit {
   onSelectVideo(video: any) {
     this.selectedVideo = video;
     console.log(this.selectedVideo);
+  }
+
+  onSubmit(video: Video) {
+    this._videoService.addVideo(video).subscribe(resNewVideo => {
+      this.videos.push(resNewVideo);
+      this.selectedVideo = resNewVideo;
+    });
   }
 }
