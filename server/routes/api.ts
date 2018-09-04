@@ -1,13 +1,13 @@
+import {dbConnect} from '../db-connect.const'
 const expressRouter = require("express");
 const router = expressRouter();
 const mongooseDB = require("mongoose");
 const video = require("../models/video");
-const db =
-  "mongodb://meanvideoadm:meanvideo1@ds241012.mlab.com:41012/meanvideoplayerdb";
+const db = dbConnect
 const dbLocal = "mongodb://localhost:27017/meanvideoplayerdb";
 mongooseDB.Promise = global.Promise;
 mongooseDB.connect(
-  dbLocal,
+  db,
   err => {
     if (err) {
       console.log("Error! in connection " + err);
