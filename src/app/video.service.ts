@@ -30,7 +30,7 @@ export class VideoService {
 
   delete(video: Video) {
     return this.http
-      .delete(this.url + video._id)
+      .delete(this.url +"/"+ video._id)
       .pipe(map((res: Response) => res.json()));
   }
 }

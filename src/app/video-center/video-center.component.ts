@@ -50,6 +50,7 @@ export class VideoCenterComponent implements OnInit {
     if (video._id) {
       this._videoService.delete(video).subscribe(res => {
         console.log(JSON.stringify(res));
+        this.selectedVideo = null;
         // this.videos.splice(this.videos.indexOf(res), 1);
       });
     }
