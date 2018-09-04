@@ -10,6 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { VideoListComponent } from "./video-list/video-list.component";
 import { VideoDetailComponent } from "./video-detail/video-detail.component";
 import { HttpModule } from "@angular/http";
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpModule } from "@angular/http";
     HomeComponent,
     VideoCenterComponent,
     VideoListComponent,
-    VideoDetailComponent
+    VideoDetailComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
