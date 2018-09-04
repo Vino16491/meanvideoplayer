@@ -1,6 +1,6 @@
 export class Video {
   _id: string;
   title: string;
-  video: string;
+  url: string;
   desc: string;
 }
